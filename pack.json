@@ -1,0 +1,24 @@
+{
+  "name": "rigVolca",
+  "url": "https://github.com/rigkid/rigVolca.git",
+  "ref": "main",
+  "version": "0.1.0",
+  "author": "Rigkid",
+  "license": "MIT Rigkid Contributors",
+  "description": "Korg volca sample transfer (Syro audio encode) and MIDI control (notes-to-speed, CC, clock). Leaf on rigAudio + rigMidi.",
+  "dependencies": [
+    {
+      "name": "rigAudio",
+      "url": "https://github.com/rigkid/rigAudio.git",
+      "ref": "main"
+    },
+    {
+      "name": "rigMidi",
+      "url": "https://github.com/rigkid/rigMidi.git",
+      "ref": "main"
+    }
+  ],
+  "include_paths": [
+    "src"
+  ]
+}

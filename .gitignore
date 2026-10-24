@@ -1,0 +1,30 @@
+# Build
+build/
+build-*/
+**/build/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+compile_commands.json
+_deps/
+cpm-package-lock.cmake
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln
+*.vcxproj*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / runtime user state
+*.log
+imgui.ini
+
+# AI tool-vendor folders — not shared repo content.
+.cursor/
+.claude/
