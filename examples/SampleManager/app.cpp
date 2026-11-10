@@ -7,7 +7,7 @@
 #include "packs/rigAudio/src/rigAudio.h"
 #include "packs/rigAudioUi/src/rigAudioUi.h"
 #include "packs/rigComponent/src/rigComponent.h"
-#include "packs/rigImGui/src/IWindow.h"
+#include "packs/rigImGui/src/ImGuiPanel.h"
 #include "packs/rigImGui/src/MWindow.h"
 #include "packs/rigImGui/src/Mui.h"
 #include "packs/rigImGui/src/rigImGui.h"
@@ -41,10 +41,10 @@ void placeQuad(Quad q) {
 	ImGui::SetNextWindowSize(ImVec2(w, h), ImGuiCond_FirstUseEver);
 }
 
-class ClipsWindow : public rigkit::IWindow {
+class ClipsWindow : public rigkit::ImGuiPanel {
   public:
 	explicit ClipsWindow(SampleManagerApp& app)
-		: IWindow("Audio Clips###volca.clips", ImGuiWindowFlags_NoCollapse |
+		: ImGuiPanel("Audio Clips###volca.clips", ImGuiWindowFlags_NoCollapse |
 												   ImGuiWindowFlags_NoDocking |
 												   ImGuiWindowFlags_NoSavedSettings),
 		  m_app(app) {
@@ -55,7 +55,7 @@ class ClipsWindow : public rigkit::IWindow {
 			return;
 		}
 		placeQuad(Quad::TL);
-		IWindow::render();
+		ImGuiPanel::render();
 	}
 	void renderContents() override {
 		auto* packs = m_app.getEngine() ? m_app.getEngine()->getPackManager() : nullptr;
@@ -75,10 +75,10 @@ class ClipsWindow : public rigkit::IWindow {
 	SampleManagerApp& m_app;
 };
 
-class SamplerWindow : public rigkit::IWindow {
+class SamplerWindow : public rigkit::ImGuiPanel {
   public:
 	explicit SamplerWindow(SampleManagerApp& app)
-		: IWindow("Sampler###volca.sampler", ImGuiWindowFlags_NoCollapse |
+		: ImGuiPanel("Sampler###volca.sampler", ImGuiWindowFlags_NoCollapse |
 												 ImGuiWindowFlags_NoDocking |
 												 ImGuiWindowFlags_NoSavedSettings),
 		  m_app(app) {
@@ -89,7 +89,7 @@ class SamplerWindow : public rigkit::IWindow {
 			return;
 		}
 		placeQuad(Quad::TR);
-		IWindow::render();
+		ImGuiPanel::render();
 	}
 	void renderContents() override { rigkit::audio::drawSampler(m_app.sampler()); }
 
@@ -97,10 +97,10 @@ class SamplerWindow : public rigkit::IWindow {
 	SampleManagerApp& m_app;
 };
 
-class SendWindow : public rigkit::IWindow {
+class SendWindow : public rigkit::ImGuiPanel {
   public:
 	explicit SendWindow(SampleManagerApp& app)
-		: IWindow("Send###volca.send", ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking |
+		: ImGuiPanel("Send###volca.send", ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking |
 										   ImGuiWindowFlags_NoSavedSettings),
 		  m_app(app) {
 		setCategory("Volca");
@@ -110,7 +110,7 @@ class SendWindow : public rigkit::IWindow {
 			return;
 		}
 		placeQuad(Quad::BL);
-		IWindow::render();
+		ImGuiPanel::render();
 	}
 	void renderContents() override {
 		const char* models[] = {"volca sample", "volca sample2"};
@@ -174,10 +174,10 @@ class SendWindow : public rigkit::IWindow {
 	SampleManagerApp& m_app;
 };
 
-class MidiWindow : public rigkit::IWindow {
+class MidiWindow : public rigkit::ImGuiPanel {
   public:
 	explicit MidiWindow(SampleManagerApp& app)
-		: IWindow("MIDI Control###volca.midi", ImGuiWindowFlags_NoCollapse |
+		: ImGuiPanel("MIDI Control###volca.midi", ImGuiWindowFlags_NoCollapse |
 												   ImGuiWindowFlags_NoDocking |
 												   ImGuiWindowFlags_NoSavedSettings),
 		  m_app(app) {
@@ -188,7 +188,7 @@ class MidiWindow : public rigkit::IWindow {
 			return;
 		}
 		placeQuad(Quad::BR);
-		IWindow::render();
+		ImGuiPanel::render();
 	}
 	void renderContents() override {
 		auto* packs = m_app.getEngine() ? m_app.getEngine()->getPackManager() : nullptr;
