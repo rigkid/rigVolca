@@ -318,7 +318,8 @@ void SampleManagerApp::setup() {
 	m_player.rescanDevices();
 
 	if (auto* ui = m_engine->getUiManager()) {
-		if (auto* wm = ui->getWindowManager()) {
+		auto* mui = dynamic_cast<rigkit::Mui*>(ui);
+		if (auto* wm = mui ? mui->getWindowManager() : nullptr) {
 			if (auto win = wm->createWindow<ClipsWindow>(*this)) {
 				win->setVisible(true);
 			}
